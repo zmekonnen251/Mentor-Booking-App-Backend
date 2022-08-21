@@ -6,7 +6,7 @@ class Ability
     when 'Mentor'
       can :manage, :all
     when 'User'
-      case user.role =='admin'
+      case user.role == 'admin'
       when true
         can :manage, :all
       when false
