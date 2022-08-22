@@ -6,9 +6,9 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  rubocop:
+    rubocop:
     name: Rubocop
-    runs-on: ub  stylelint:untu-18.04
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
