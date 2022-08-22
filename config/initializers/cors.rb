@@ -5,12 +5,18 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
-#   allow do
-#     origins "example.com"
-#
-#     resource "*",
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#   end
-# end
+# config/initializers/cors.rb
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  origins = [
+      'localhost:3000', 'localhost:3001', 'localhost:5000',
+      'staging.xyz.com', 'www.xyz.com',
+    ].freeze
+  allow do
+    origins origins
+    resource(
+     '*',
+     headers: :any,
+     methods: [:get, :patch, :put, :delete, :post, :options, :show]
+    )
+  end
+end

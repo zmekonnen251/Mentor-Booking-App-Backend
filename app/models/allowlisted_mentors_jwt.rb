@@ -1,0 +1,2 @@
+class AllowlistedMentorsJwt < ApplicationRecord
+end
