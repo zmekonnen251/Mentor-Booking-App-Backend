@@ -9,6 +9,8 @@ class Mentor < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :allowlisted_mentors_jwts, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def active_for_authentication?
     super && approved?
