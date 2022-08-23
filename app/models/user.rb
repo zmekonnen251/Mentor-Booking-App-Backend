@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   has_many :allowlisted_jwts, dependent: :destroy
 
-  def for_display
-    {
-      id:,
-      email:
-    }
-  end
+  # def for_display
+  #   {
+  #     id:,
+  #     email:
+  #   }
+  # end
 end
