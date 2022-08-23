@@ -6,11 +6,14 @@ class User < ApplicationRecord
          jwt_revocation_strategy: self
 
   has_many :allowlisted_jwts, dependent: :destroy
+  
+  has_many :bookings, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
-  def for_display
-    {
-      id:,
-      email:
-    }
-  end
+  # def for_display
+  #   {
+  #     id:,
+  #     email:
+  #   }
+  # end
 end

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_20_204348) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_23_053348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
-    t.string "aud", null: false
+    t.string "aud"
     t.datetime "exp", null: false
     t.string "remote_ip"
     t.string "browser_data"
@@ -44,12 +44,40 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_204348) do
     t.index ["mentor_id"], name: "index_allowlisted_mentors_jwts_on_mentor_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "mentor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_bookings_on_mentor_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "jwt_denylists", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "mentor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_likes_on_mentor_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "mentor_technologies", force: :cascade do |t|
+    t.bigint "mentor_id", null: false
+    t.bigint "technology_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_mentor_technologies_on_mentor_id"
+    t.index ["technology_id"], name: "index_mentor_technologies_on_technology_id"
   end
 
   create_table "mentors", force: :cascade do |t|
@@ -69,6 +97,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_204348) do
     t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,4 +118,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_204348) do
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
   add_foreign_key "allowlisted_mentors_jwts", "mentors", on_delete: :cascade
+  add_foreign_key "bookings", "mentors"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "likes", "mentors"
+  add_foreign_key "likes", "users"
+  add_foreign_key "mentor_technologies", "mentors"
+  add_foreign_key "mentor_technologies", "technologies"
 end
