@@ -34,7 +34,6 @@ class DeviseCreateMentors < ActiveRecord::Migration[7.0]
       # t.datetime :locked_at
 
       t.string :bio
-      t.integer :specialization_id
       t.string :name
 
       t.timestamps null: false
