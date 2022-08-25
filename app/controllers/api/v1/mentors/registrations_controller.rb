@@ -15,7 +15,7 @@ class Api::V1::Mentors::RegistrationsController < Devise::RegistrationsControlle
     resource.save
 
     if resource.persisted?
-      render json: { message: 'Signed up successfully' }, status: :created
+      render json: { message: 'Signed up successfully', mentor_id: resource.id }, status: :created
     else
       render json: { errors: resource.errors }, status: :unprocessable_entity
     end

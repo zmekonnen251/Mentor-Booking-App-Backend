@@ -19,7 +19,9 @@ class Api::V1::Mentors::SessionsController < Devise::SessionsController
         aud = last.aud
       end
 
-      respond_with(resource, { aud: })
+      @mentor_data = { mentor: resource, avatar: url_for(resource.avatar) }
+
+      respond_with(@mentor_data, { aud: })
     else
       render json: resource.errors, status: 401
     end
