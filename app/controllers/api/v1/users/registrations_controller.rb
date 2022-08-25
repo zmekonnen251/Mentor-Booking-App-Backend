@@ -28,4 +28,8 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
   def register_failed
     render json: { message: 'Something went wrong.' }, status: :unprocessable_entity
   end
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email name avatar avatar_cache remove_avatar])
+  end
 end
