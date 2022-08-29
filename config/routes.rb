@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
   devise_for :mentors,controllers: { 
-    registrations: 'api/v1/mentors/registrations',
     sessions: 'api/v1/mentors/sessions',
+    registrations: 'api/v1/mentors/registrations',
   }
 
   devise_for :users,controllers: {
     sessions: 'api/v1/users/sessions',
     registrations: 'api/v1/users/registrations'
   }
-  
-  post 'technologies', to: 'api/v1/technologies#create'
-  
+ 
+  post '/technologies', to: 'api/v1/technologies#create'
+  get '/mentors/list', to: 'api/v1/mentors/mentors#index'
+  put '/approve_mentor', to: 'api/v1/mentors/mentors#approve_mentor'
+  put '/ban_mentor', to: 'api/v1/mentors/mentors#ban_mentor'
+  delete '/remove_mentor/:id', to: 'api/v1/mentors/mentors#remove_mentor'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
