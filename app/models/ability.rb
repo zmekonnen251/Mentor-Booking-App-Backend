@@ -4,13 +4,20 @@ class Ability
   def initialize(user)
     case user.class.name
     when 'Mentor'
-      can :manage, :all
-    when 'User'
-      case user.role == 'admin'
-      when true
-        can :manage, :all
-      when false
+      case user.role
+      when 'mentor'
         can :read, :all
+        can :create, Mentor
+      when 'admin'
+        can :manage, :all
+      end
+    when 'User'
+      case user.role
+      when 'user'
+        can :read, :all
+        can :create, User
+      when 'admin'
+        can :manage, :all
       end
     end
   end
