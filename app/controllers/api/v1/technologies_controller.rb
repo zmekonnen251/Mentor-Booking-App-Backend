@@ -7,13 +7,19 @@ class Api::V1::TechnologiesController < ApplicationController
 
     if Mentor.find(@mentor_id).persisted?
       @technologies.each do |technology|
-        if Technology.nil? && Technology.find_by(name: technology).persisted?
-          @technology_id = Technology.find_by(name: technology).id
+        if Technology.nil?
+          @technology = Technology.create(name: technology.downcase)
+          puts @technology.save
+
+        elsif !Technology.find_by(name: technology.downcase).nil?
+          @technology_id = Technology.find_by(name: technology.downcase).id
         else
-          @technology = Technology.create(name: technology)
+          @technology = Technology.create(name: technology.downcase)
           @technology_id = @technology.id
+          puts @technology.save
         end
-        MentorTechnology.create(mentor_id: @mentor_id, technology_id: @technology_id)
+        mentor_tech = MentorTechnology.create(mentor_id: @mentor_id, technology_id: @technology_id)
+        puts mentor_tech.save
       end
       render json: { message: 'Technologies added successfully.' }, status: :ok
     else
