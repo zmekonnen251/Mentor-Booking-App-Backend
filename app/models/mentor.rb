@@ -13,7 +13,7 @@ class Mentor < ApplicationRecord
   has_many :allowlisted_mentors_jwts, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :mentor_technologies
+  has_many :mentor_technologies, dependent: :destroy
   has_one_attached :avatar
 
   def active_for_authentication?
