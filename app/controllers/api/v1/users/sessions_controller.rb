@@ -28,7 +28,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
 
       @user_data = { user: resource, avatar: url_for(resource.avatar) }
 
-      respond_with(@user_data, { aud: })
+      respond_with(@user_data)
 
     else
       render json: resource.errors, status: 401
