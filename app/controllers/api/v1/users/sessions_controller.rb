@@ -1,13 +1,6 @@
 class Api::V1::Users::SessionsController < Devise::SessionsController
   respond_to :json
 
-  # before_action :configure_sign_in_params, only: [:create]
-
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
   # POST /resource/sign_in
   def create
     possible_aud = request.headers['HTTP_JWT_AUD'].presence || request.headers['JWT_AUD'].presence
