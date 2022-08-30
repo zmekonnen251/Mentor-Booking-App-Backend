@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   delete '/remove_mentor/:id', to: 'api/v1/mentors/mentors#remove_mentor'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get '/reservations', to: 'api/v1/bookings#reservations'
+  delete '/cancel_reservation/:id', to: 'api/v1/bookings#cancel'
+  post '/reserve', to: 'api/v1/bookings#reserve'
   # Defines the root path route ("/")
   # root "articles#index"
 end
