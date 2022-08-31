@@ -1,5 +1,4 @@
 class Mentor < ApplicationRecord
-  # after_create :send_admin_mail
   ActiveStorage::Current.url_options = -> { { host: 'localhost', port: 3000 } }
   include Rails.application.routes.url_helpers
 
