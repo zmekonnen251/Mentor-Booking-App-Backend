@@ -1,9 +1,9 @@
 class Api::V1::BookingsController < ApplicationController
-  before_action :authenticate_user! , if: :user_signed_in?
+  before_action :authenticate_user!, if: :user_signed_in?
   before_action :authenticate_mentor!, if: :mentor_signed_in?
 
   def reservations
-    @booking = Booking.where(:user_id => current_user.id).includes(:mentor)
+    @booking = Booking.where(user_id: current_user.id).includes(:mentor)
     @bookings = @booking.map do |booking|
       {
         id: booking.id,
@@ -14,19 +14,17 @@ class Api::V1::BookingsController < ApplicationController
         date: booking.date,
         city: booking.city,
         country: booking.country,
-        avatar: booking.mentor.avatar_url,
+        avatar: booking.mentor.avatar_url
       }
     end
     render json: @bookings, status: :ok
   end
 
-  def cancel_reservation
-
-  end
+  def cancel_reservation; end
 
   def reserve
     @mentor = Mentor.find(booking_params[:mentor_id].to_i)
-    @user= User.find(booking_params[:user_id].to_i)
+    @user = User.find(booking_params[:user_id].to_i)
     @city = booking_params[:city]
     @country = booking_params[:country]
     @date = booking_params[:date]
