@@ -20,8 +20,16 @@ class Api::V1::BookingsController < ApplicationController
     render json: @bookings, status: :ok
   end
 
-  def cancel_reservation; end
-
+  def cancel_reservation
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    if @booking.destroyed?
+      render json: { message: 'Booking cancelled successfully.' }, status: :ok
+    else
+      render json: { message: 'Booking not cancelled.' }, status: :unprocessable_entity
+    end
+  end
+  
   def reserve
     @mentor = Mentor.find(booking_params[:mentor_id].to_i)
     @user = User.find(booking_params[:user_id].to_i)
