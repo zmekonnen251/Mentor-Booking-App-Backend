@@ -30,6 +30,10 @@ In the project directory, you can run:
 
 **`bundle install`** to install require tools for the project to run
 
+**`rails server`**
+
+**`http://localhost:3000/`**
+
 **`Rspec spec`** to run all the test
 
 For more details, see [Ruby on Rails Guides (v7.0.3.1)](https://guides.rubyonrails.org/).
