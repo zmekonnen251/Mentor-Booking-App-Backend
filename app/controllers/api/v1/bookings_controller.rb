@@ -3,7 +3,21 @@ class Api::V1::BookingsController < ApplicationController
   before_action :authenticate_mentor!, if: :mentor_signed_in?
 
   def reservations
-
+    @booking = Booking.where(:user_id => current_user.id).includes(:mentor)
+    @bookings = @booking.map do |booking|
+      {
+        id: booking.id,
+        user_id: booking.user_id,
+        mentor_id: booking.mentor_id,
+        mentor_name: booking.mentor.name,
+        mentor_email: booking.mentor.email,
+        date: booking.date,
+        city: booking.city,
+        country: booking.country,
+        avatar: booking.mentor.avatar_url,
+      }
+    end
+    render json: @bookings, status: :ok
   end
 
   def cancel_reservation
