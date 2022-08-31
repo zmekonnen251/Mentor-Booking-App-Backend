@@ -53,6 +53,17 @@ For more details, see [Ruby on Rails Guides (v7.0.3.1)](https://guides.rubyonrai
 - Twitter: [Alfred Bisimwa](https://twitter.com/AlfredBisimwa1)
 - LinkedIn: [Alfred Bisimwa](https://www.linkedin.com/in/alfred-bisimwa-0501a81a8/)
 
+👤 **zieeco**
+
+- GitHub: [@zieeco](https://github.com/zieeco)
+- Twitter [@zieecodes](https://twitter.com/zieecodes)
+- LinkedIn: [Isaac Imaobong Samuel](https://www.linkedin.com/in/isaac-imaobong-samuel)
+
+👤 **Wuletaw Wonte**
+
+- GitHub: [@wuletawwonte](https://github.com/wuletawwonte)
+- Twitter: [Wuletaw Wonte](https://twitter.com/wuletaww)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
