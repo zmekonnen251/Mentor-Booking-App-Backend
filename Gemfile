@@ -43,7 +43,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rswag'
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
@@ -61,3 +60,4 @@ gem 'fast_jsonapi'
 
 gem 'activestorage'
 gem 'jsonapi-serializer', '~> 2.2'
+gem 'rswag'
