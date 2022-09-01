@@ -44,8 +44,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rswag-api'
-  gem 'rswag-ui'
   gem 'rswag-specs'
+  gem 'rswag-ui'
 end
 
 group :development do

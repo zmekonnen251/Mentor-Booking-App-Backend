@@ -1,12 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/mentors/mentors', type: :request do
-
   path '/mentors/list' do
-
     get('list mentors') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,10 +17,8 @@ RSpec.describe 'api/v1/mentors/mentors', type: :request do
   end
 
   path '/approve_mentor' do
-
     put('approve_mentor mentor') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -37,10 +32,8 @@ RSpec.describe 'api/v1/mentors/mentors', type: :request do
   end
 
   path '/ban_mentor' do
-
     put('ban_mentor mentor') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {

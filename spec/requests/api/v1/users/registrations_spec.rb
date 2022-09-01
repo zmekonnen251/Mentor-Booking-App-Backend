@@ -1,12 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/users/registrations', type: :request do
-
   path '/users/cancel' do
-
     get('cancel registration') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,10 +17,8 @@ RSpec.describe 'api/v1/users/registrations', type: :request do
   end
 
   path '/users/sign_up' do
-
     get('new registration') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -37,10 +32,8 @@ RSpec.describe 'api/v1/users/registrations', type: :request do
   end
 
   path '/users/edit' do
-
     get('edit registration') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -54,38 +47,8 @@ RSpec.describe 'api/v1/users/registrations', type: :request do
   end
 
   path '/users' do
-
-    patch('update registration') do
-      response(200, 'successful') do
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
     put('update registration') do
       response(200, 'successful') do
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
-    delete('delete registration') do
-      response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -99,7 +62,6 @@ RSpec.describe 'api/v1/users/registrations', type: :request do
 
     post('create registration') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
