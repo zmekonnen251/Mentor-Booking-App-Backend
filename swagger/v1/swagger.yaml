@@ -84,16 +84,6 @@ paths:
       responses:
         '200':
           description: successful
-    put:
-      summary: update registration
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete registration
-      responses:
-        '200':
-          description: successful
     post:
       summary: create registration
       responses:
@@ -141,18 +131,8 @@ paths:
         '200':
           description: successful
   "/users":
-    patch:
-      summary: update registration
-      responses:
-        '200':
-          description: successful
     put:
       summary: update registration
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete registration
       responses:
         '200':
           description: successful
