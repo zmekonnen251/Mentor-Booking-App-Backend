@@ -8,7 +8,6 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     if user_signed_in?
       last = resource.allowlisted_jwts.where(aud: possible_aud).last
-      aud = possible_aud || 'UNKNOWN'
 
       if last.present?
         last.update_columns({
@@ -16,7 +15,6 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
                               os_data: params[:os],
                               remote_ip: params[:ip]
                             })
-        aud = last.aud
       end
 
       @user_data = { user: resource, avatar: url_for(resource.avatar) }
