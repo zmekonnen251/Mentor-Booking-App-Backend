@@ -81,8 +81,8 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Hat tip to microverse for their support
-- Inspiration
+- Thanks to minimal for the awesome [design](https://www.behance.net/muratk).
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+- This project is [MIT](./LICENSE) licensed.
