@@ -4,9 +4,3 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
-
-begin
-  require 'minitest/autorun'
-rescue LoadError => e
-  raise e unless ENV['RAILS_ENV'] == "production"
-end

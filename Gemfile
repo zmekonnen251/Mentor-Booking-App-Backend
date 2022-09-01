@@ -42,12 +42,14 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
 end
-
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
