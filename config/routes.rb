@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :mentors,controllers: { 
     sessions: 'api/v1/mentors/sessions',
     registrations: 'api/v1/mentors/registrations',
