@@ -5,7 +5,9 @@ ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
-
+gem 'rake'
+gem 'rspec'
+gem 'kramdown'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -42,14 +44,12 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
-end
-
-group :test do
   gem 'rspec-rails'
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
 end
+
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
