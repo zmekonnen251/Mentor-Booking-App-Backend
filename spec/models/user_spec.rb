@@ -6,17 +6,17 @@ RSpec.describe User, type: :model do
     described_class.new(id: 1, email: 'test@gmail.com', password: 'password', name: 'ismail', role: 'user')
   end
 
-  it 'is not valid with a name' do
+  it 'is valid with a name' do
     subject.name = 'ismail'
     expect(subject).to be_valid
   end
 
-  it 'is not valid with an email' do
+  it 'is valid with an email' do
     subject.email = 'test@gmail.com'
     expect(subject).to be_valid
   end
 
-  it 'is not valid with password' do
+  it 'is valid with password' do
     subject.password = 'password'
     expect(subject).to be_valid
   end
