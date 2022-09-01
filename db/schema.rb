@@ -74,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "date"
+    t.string "country", null: false
+    t.string "city", null: false
     t.bigint "user_id", null: false
     t.bigint "mentor_id", null: false
     t.datetime "created_at", null: false

@@ -7,10 +7,7 @@
 
 # config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  origins = [
-      'localhost:3002', 'localhost:3001', 'localhost:5000',
-      'staging.xyz.com', 'www.xyz.com',
-    ].freeze
+  origins = ('*').split(',')
   allow do
     origins origins
     resource(
