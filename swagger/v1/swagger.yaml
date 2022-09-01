@@ -1,0 +1,165 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/reservations":
+    get:
+      summary: reservations booking
+      responses:
+        '200':
+          description: successful
+  "/cancel_reservation/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: cancel_reservation booking
+      responses:
+        '200':
+          description: successful
+  "/reserve":
+    post:
+      summary: reserve booking
+      responses:
+        '200':
+          description: successful
+  "/mentors/list":
+    get:
+      summary: list mentors
+      responses:
+        '200':
+          description: successful
+  "/approve_mentor":
+    put:
+      summary: approve_mentor mentor
+      responses:
+        '200':
+          description: successful
+  "/ban_mentor":
+    put:
+      summary: ban_mentor mentor
+      responses:
+        '200':
+          description: successful
+  "/remove_mentor/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: remove_mentor mentor
+      responses:
+        '200':
+          description: successful
+  "/mentors/cancel":
+    get:
+      summary: cancel registration
+      responses:
+        '200':
+          description: successful
+  "/mentors/sign_up":
+    get:
+      summary: new registration
+      responses:
+        '200':
+          description: successful
+  "/mentors/edit":
+    get:
+      summary: edit registration
+      responses:
+        '200':
+          description: successful
+  "/mentors":
+    patch:
+      summary: update registration
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create registration
+      responses:
+        '200':
+          description: successful
+  "/mentors/sign_in":
+    get:
+      summary: new session
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create session
+      responses:
+        '200':
+          description: successful
+  "/mentors/sign_out":
+    delete:
+      summary: delete session
+      responses:
+        '200':
+          description: successful
+  "/technologies":
+    post:
+      summary: create technology
+      responses:
+        '200':
+          description: successful
+  "/users/cancel":
+    get:
+      summary: cancel registration
+      responses:
+        '200':
+          description: successful
+  "/users/sign_up":
+    get:
+      summary: new registration
+      responses:
+        '200':
+          description: successful
+  "/users/edit":
+    get:
+      summary: edit registration
+      responses:
+        '200':
+          description: successful
+  "/users":
+    put:
+      summary: update registration
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create registration
+      responses:
+        '200':
+          description: successful
+  "/users/sign_in":
+    get:
+      summary: new session
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create session
+      responses:
+        '200':
+          description: successful
+  "/users/sign_out":
+    delete:
+      summary: delete session
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

@@ -13,7 +13,7 @@ class Api::V1::BookingsController < ApplicationController
         date: booking.date,
         city: booking.city,
         country: booking.country,
-        avatar: booking.mentor.avatar_url
+        avatar: rails_blob_url(@booking.mentor.avatar)
       }
     end
     render json: @bookings, status: :ok
@@ -48,7 +48,7 @@ class Api::V1::BookingsController < ApplicationController
         date: @booking.date,
         city: @booking.city,
         country: @booking.country,
-        avatar: @booking.mentor.avatar_url
+        avatar: rails_blob_url(@booking.mentor.avatar)
       }
 
       render json: @new_booking, status: :ok
