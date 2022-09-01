@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   include Users::Allowlist
-  ActiveStorage::Current.url_options = -> { { host: 'localhost', port: 3000 } }
 
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :jwt_authenticatable,

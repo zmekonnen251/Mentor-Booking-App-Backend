@@ -2,7 +2,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
   respond_to :json
 
   def index
-    @unapproved = Mentor.includes(:mentor_technologies).where(approved: false)
+    @unapproved = Mentor.where(approved: false).includes(:mentor_technologies)
     @approved = Mentor.includes(:mentor_technologies).where(approved: true)
 
     @unapproved_mentors = @unapproved.map do |mentor|
@@ -11,10 +11,10 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         name: mentor.name,
         email: mentor.email,
         bio: mentor.bio,
-        technologies: MentorTechnology.where(mentor_id: mentor.id).map { |technology| technology.technology.name },
+        technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
         role: mentor.role,
         approved: mentor.approved,
-        avatar_url: mentor.avatar_url
+        avatar_url: rails_blob_url(mentor.avatar)
       }
     end
 
@@ -24,10 +24,10 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         name: mentor.name,
         email: mentor.email,
         bio: mentor.bio,
-        technologies: MentorTechnology.where(mentor_id: mentor.id).map { |technology| technology.technology.name },
+        technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
         role: mentor.role,
         approved: mentor.approved,
-        avatar_url: mentor.avatar_url
+        avatar_url: rails_blob_url(mentor.avatar)
       }
     end
 

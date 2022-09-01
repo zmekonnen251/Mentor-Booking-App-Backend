@@ -1,7 +1,4 @@
 class Mentor < ApplicationRecord
-  ActiveStorage::Current.url_options = -> { { host: 'localhost', port: 3000 } }
-  include Rails.application.routes.url_helpers
-
   include Mentors::AllowlistMentors
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -25,13 +22,5 @@ class Mentor < ApplicationRecord
 
   def send_admin_mail
     AdminMailer.new_mentor_waiting_for_approval(email).deliver
-  end
-
-  def avatar_url
-    if avatar.attached?
-      "http://localhost:3000#{Rails.application.routes.url_helpers.rails_blob_path(avatar, only_path: true)}".to_s
-    else
-      'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250'
-    end
   end
 end
