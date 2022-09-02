@@ -1,6 +1,6 @@
 class Api::V1::TechnologiesController < ApplicationController
   def create
-    @mentor_id = params[:mentor_id]
+    @mentor_id = technologies_params(:mentor_id, :technologies)
     @technologies = params[:technologies]
 
     if Mentor.find(@mentor_id).persisted?
@@ -20,5 +20,11 @@ class Api::V1::TechnologiesController < ApplicationController
     else
       render json: { message: 'Mentor not found.' }, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def technologies_params
+    params.permit(:mentor_id, :technologies)
   end
 end
