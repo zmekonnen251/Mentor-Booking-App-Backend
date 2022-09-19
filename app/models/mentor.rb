@@ -1,5 +1,4 @@
 class Mentor < ApplicationRecord
-  after_create :send_admin_mail
   include Mentors::AllowlistMentors
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
