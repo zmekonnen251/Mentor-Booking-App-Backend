@@ -1,7 +1,5 @@
 class Api::V1::TechnologiesController < ApplicationController
   def create
-    puts '#########################'
-    puts params
     @mentor_id = params[:mentor_id]
     @technologies = params[:technologies]
 

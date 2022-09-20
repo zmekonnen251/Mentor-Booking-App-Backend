@@ -19,7 +19,7 @@ class Api::V1::Mentors::SessionsController < Devise::SessionsController
         aud = last.aud
       end
 
-      @mentor_data = { mentor: resource, avatar: url_for(resource.avatar) }
+      @mentor_data = { mentor: resource, avatar: resource.img_url }
 
       respond_with(@mentor_data, { aud: })
     else
@@ -46,16 +46,4 @@ class Api::V1::Mentors::SessionsController < Devise::SessionsController
   def respond_to_on_destroy
     render json: { message: 'Signed out successfully' }
   end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

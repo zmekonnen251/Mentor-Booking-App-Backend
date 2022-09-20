@@ -17,7 +17,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
                             })
       end
 
-      @user_data = { user: resource, avatar: url_for(resource.avatar) }
+      @user_data = { user: resource, avatar: resource.img_url }
 
       respond_with(@user_data)
 
