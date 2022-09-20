@@ -14,7 +14,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
         role: mentor.role,
         approved: mentor.approved,
-        avatar_url: rails_blob_url(mentor.avatar)
+        avatar_url: mentor.img_url
       }
     end
 
@@ -27,7 +27,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
         role: mentor.role,
         approved: mentor.approved,
-        avatar_url: rails_blob_url(mentor.avatar)
+        avatar_url: mentor.img_url
       }
     end
 

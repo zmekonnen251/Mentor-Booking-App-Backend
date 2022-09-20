@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_20_002700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
     t.datetime "updated_at", null: false
     t.boolean "approved", default: false, null: false
     t.string "role", default: "mentor"
+    t.string "img_url", default: "https://p.kindpng.com/picc/s/421-4212356_user-white-icon-png-transparent-png.png"
     t.index ["approved"], name: "index_mentors_on_approved"
     t.index ["email"], name: "index_mentors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
@@ -143,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "user", null: false
+    t.string "img_url", default: "https://p.kindpng.com/picc/s/421-4212356_user-white-icon-png-transparent-png.png"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
