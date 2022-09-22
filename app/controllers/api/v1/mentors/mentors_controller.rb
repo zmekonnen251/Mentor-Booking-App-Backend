@@ -36,11 +36,11 @@ class Api::V1::Mentors::MentorsController < ApplicationController
 
   def create
     @name = params[:mentor][:name]
-    @phone =  params[:mentor][:phone]
-    @email =params[:mentor][:email]
-    @img_url =params[:mentor][:img_url]
+    @phone = params[:mentor][:phone]
+    @email = params[:mentor][:email]
+    @img_url = params[:mentor][:img_url]
     @bio = params[:mentor][:bio]
-    @mentor = Mentor.create(name: @name,phone:@phone,bio:@bio ,email:@email ,img_url: @img_url)
+    @mentor = Mentor.create(name: @name, phone: @phone, bio: @bio, email: @email, img_url: @img_url)
 
     if @mentor.save
       render json: { message: 'Mentor created successfully', mentor_id: @mentor.id }, status: :created

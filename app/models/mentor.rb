@@ -8,7 +8,6 @@ class Mentor < ApplicationRecord
   validates :phone, presence: true
   validates :bio, presence: true
 
-
   def active_for_authentication?
     super && approved?
   end
