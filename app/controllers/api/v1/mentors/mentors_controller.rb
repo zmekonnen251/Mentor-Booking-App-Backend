@@ -2,7 +2,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
   respond_to :json
 
   def index
-    @unapproved = Mentor.where(approved: false).includes(:mentor_technologies)
+    @unapproved = Mentor.includes(:mentor_technologies).where(approved: false)
     @approved = Mentor.includes(:mentor_technologies).where(approved: true)
 
     @unapproved_mentors = @unapproved.map do |mentor|
@@ -11,8 +11,8 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         name: mentor.name,
         email: mentor.email,
         bio: mentor.bio,
+        phone: mentor.phone,
         technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
-        role: mentor.role,
         approved: mentor.approved,
         avatar_url: mentor.img_url
       }
@@ -24,8 +24,8 @@ class Api::V1::Mentors::MentorsController < ApplicationController
         name: mentor.name,
         email: mentor.email,
         bio: mentor.bio,
+        phone: mentor.phone,
         technologies: mentor.mentor_technologies.map { |technology| technology.technology.name },
-        role: mentor.role,
         approved: mentor.approved,
         avatar_url: mentor.img_url
       }
@@ -34,10 +34,31 @@ class Api::V1::Mentors::MentorsController < ApplicationController
     render json: { unapproved_mentors: @unapproved_mentors, approved_mentors: @approved_mentors }, status: :ok
   end
 
+  def create
+    @name = params[:mentor][:name]
+    @phone =  params[:mentor][:phone]
+    @email =params[:mentor][:email]
+    @img_url =params[:mentor][:img_url]
+    @bio = params[:mentor][:bio]
+    @mentor = Mentor.create(name: @name,phone:@phone,bio:@bio ,email:@email ,img_url: @img_url)
+
+    if @mentor.save
+      render json: { message: 'Mentor created successfully', mentor_id: @mentor.id }, status: :created
+    else
+      render json: { errors: @mentor.errors }, status: :unprocessable_entity
+    end
+  end
+
   def approve_mentor
-    @params = params.permit(:id, :approved)
-    @mentor = Mentor.find(@params[:id])
-    if @mentor.approved == false && @mentor.update(approved: @params[:approved])
+    puts '#############################################'
+    puts params
+    puts '#############################################'
+    @mentor_id = params.permit(:id)[:id]
+    puts '#############################################'
+    puts @mentor_id
+    puts '#############################################'
+    @mentor = Mentor.find(@mentor_id.to_i)
+    if @mentor.update(approved: true)
       render json: { message: 'Mentor approved successfully' }, status: :ok
       MentorMailer.mentor_approved(@mentor.email).deliver_now
     else
@@ -70,4 +91,6 @@ class Api::V1::Mentors::MentorsController < ApplicationController
   # def send_mentor_approved_email(email)
   #   AdminMailer.mentor_approved(email).deliver_now
   # end
+
+  # private
 end
