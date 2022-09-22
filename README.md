@@ -23,6 +23,12 @@ To get a clone of the project, run `git clone https://github.com/zmekonnen251/Me
 ```
 cd `Mentor-booking-App-Backend`
 ```
+**Start Front-end React server**
+- Clone the project `https://github.com/zmekonnen251/mentor-booking-app-frontend.git`
+- navigate to the folder `cd Mentor-Booking-app-frontend`
+- run `npm i `to install all dependencies
+- Start server `npm start` and choose the yes option to start server in different port (not 3000)
+- Enjoy interacting with the app.
 
 ### Available Scripts
 
