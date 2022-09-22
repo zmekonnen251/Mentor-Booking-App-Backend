@@ -10,37 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_150238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
-    t.bigint "byte_size", null: false
-    t.string "checksum"
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
 
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
@@ -55,21 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
     t.bigint "user_id"
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
-  end
-
-  create_table "allowlisted_mentors_jwts", force: :cascade do |t|
-    t.string "jti", null: false
-    t.string "aud"
-    t.datetime "exp", null: false
-    t.string "remote_ip"
-    t.string "browser_data"
-    t.string "os_data"
-    t.string "device_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "mentor_id"
-    t.index ["jti"], name: "index_allowlisted_mentors_jwts_on_jti", unique: true
-    t.index ["mentor_id"], name: "index_allowlisted_mentors_jwts_on_mentor_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -112,19 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
 
   create_table "mentors", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "bio"
     t.string "name"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "approved", default: false, null: false
-    t.string "role", default: "mentor"
+    t.string "img_url", default: "https://p.kindpng.com/picc/s/421-4212356_user-white-icon-png-transparent-png.png"
     t.index ["approved"], name: "index_mentors_on_approved"
     t.index ["email"], name: "index_mentors_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -143,13 +96,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_171153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "user", null: false
+    t.string "img_url", default: "https://p.kindpng.com/picc/s/421-4212356_user-white-icon-png-transparent-png.png"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
-  add_foreign_key "allowlisted_mentors_jwts", "mentors", on_delete: :cascade
   add_foreign_key "bookings", "mentors"
   add_foreign_key "bookings", "users"
   add_foreign_key "likes", "mentors"

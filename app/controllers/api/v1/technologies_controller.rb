@@ -1,6 +1,6 @@
 class Api::V1::TechnologiesController < ApplicationController
   def create
-    @mentor_id = technologies_params(:mentor_id, :technologies)
+    @mentor_id = params[:mentor_id]
     @technologies = params[:technologies]
 
     if Mentor.find(@mentor_id).persisted?
