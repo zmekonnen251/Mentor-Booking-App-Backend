@@ -50,13 +50,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
   end
 
   def approve_mentor
-    puts '#############################################'
-    puts params
-    puts '#############################################'
     @mentor_id = params.permit(:id)[:id]
-    puts '#############################################'
-    puts @mentor_id
-    puts '#############################################'
     @mentor = Mentor.find(@mentor_id.to_i)
     if @mentor.update(approved: true)
       render json: { message: 'Mentor approved successfully' }, status: :ok
