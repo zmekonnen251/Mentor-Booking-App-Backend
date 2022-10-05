@@ -54,7 +54,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
     @mentor = Mentor.find(@mentor_id.to_i)
     if @mentor.update(approved: true)
       render json: { message: 'Mentor approved successfully' }, status: :ok
-      MentorMailer.mentor_approved(@mentor.email).deliver_now
+      # MentorMailer.mentor_approved(@mentor.email).deliver_now
     else
       render json: { message: 'Something went wrong' }, status: :unprocessable_entity
     end
@@ -66,7 +66,7 @@ class Api::V1::Mentors::MentorsController < ApplicationController
 
     if @mentor.approved == true && @mentor.update(approved: @params[:approved])
       render json: { message: 'Mentor banned successfully' }, status: :ok
-      MentorMailer.mentor_banned(@mentor.email).deliver_now
+      # MentorMailer.mentor_banned(@mentor.email).deliver_now
     else
       render json: { message: 'Something went wrong' }, status: :unprocessable_entity
     end
