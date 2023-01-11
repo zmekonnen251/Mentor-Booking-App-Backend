@@ -1,6 +1,6 @@
-# fly.toml file generated for empty-glade-2648 on 2022-09-19T19:16:05+03:00
+# fly.toml file generated for mentor-booking-api on 2023-01-11T16:55:27+03:00
 
-app = "empty-glade-2648"
+app = "mentor-booking-api"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
